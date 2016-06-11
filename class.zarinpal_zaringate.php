@@ -1,15 +1,15 @@
 <?php
 /*
- * HostBill zarinpal gateway module
+ * HostBill zarinpal zaringate gateway module
  * @see https://www.zarinpal.com/lab/
  *
  * 2013 HostBill -  Complete Client Management, Support and Billing Software
  * https://www.zarinpal.com/lab/
  */
 
-class zarinpal extends PaymentModule
+class zarinpal_zaringate extends PaymentModule
 {
-    protected $modname = 'درگاه پرداخت زرين پال';
+    protected $modname = 'درگاه پرداخت مستقيم زرين پال';
     protected $description = 'این ماژول توسط تيم توسعه زرين پال نوشته شده است';
     protected $supportedCurrencies = [];
 
@@ -42,7 +42,7 @@ class zarinpal extends PaymentModule
         if ($result->Status == 100) {
             $_SESSION['invoiceid'] = $this->invoice_id;
             $_SESSION['amount'] = $amount;
-            header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority);
+            header('Location: https://www.zarinpal.com/pg/StartPay/'.$result->Authority.'/ZarinGate');
         } else {
             echo 'خطا در اتصال به زرين پال. کد خطا: '.$result->Status;
         }
